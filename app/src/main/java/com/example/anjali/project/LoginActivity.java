@@ -124,6 +124,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         @TargetApi(Build.VERSION_CODES.M)
                         public void onClick(View v) {
                             requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
+
                         }
                     });
         } else {
