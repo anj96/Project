@@ -14,9 +14,7 @@ import android.widget.TextView;
 public class RegisterActivity extends AppCompatActivity {
     Button submitButton;
     EditText nameText;
-    EditText professionText;
     TextView enterName;
-    TextView enterPofession;
     TextView databaseValue;
     DBHelper dbHelper;
 
@@ -28,9 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         nameText = (EditText)findViewById(R.id.nameText);
-        professionText = (EditText)findViewById(R.id.professionText);
         enterName = (TextView)findViewById(R.id.enterName);
-        enterPofession = (TextView)findViewById(R.id.enterProfession);
         databaseValue = (TextView)findViewById(R.id.databaseValue);
         dbHelper= new DBHelper(RegisterActivity.this, null,null,1);
         printDatabase();
@@ -39,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         submitButton= (Button)findViewById(R.id.submitButton);
         submitButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Student student = new Student(nameText.getText().toString(),professionText.getText().toString());
+                Student student = new Student(nameText.getText().toString());
                 dbHelper.insertEntry(student);
                 printDatabase();
                // Intent i = new Intent(RegisterActivity.this, Registered.class);
@@ -61,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
         String dbString =dbHelper.getEntry();
         databaseValue.setText(dbString);
         nameText.setText("");
-        professionText.setText("");
 
     }
 

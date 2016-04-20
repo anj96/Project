@@ -27,12 +27,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/submitButton" />
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/professionText"
-        android:layout_below="@+id/nameText"
-        android:layout_alignStart="@+id/nameText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,15 +38,6 @@
         android:layout_alignParentStart="true"
         android:layout_above="@+id/professionText" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Profession"
-        android:id="@+id/enterProfession"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/professionText"
-        android:layout_below="@+id/enterName" />
 
     <TextView
         android:layout_width="wrap_content"

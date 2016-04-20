@@ -7,15 +7,15 @@ public class Student {
 
     private int _id;
     private String _studentname;
-    private String _studentprofession;
+   // private String _studentprofession;
 
     public Student(){
 
     }
 
-    public Student(String studentname, String studentprofession){
+    public Student(String studentname){
         this._studentname= studentname;
-        this._studentprofession= studentprofession;
+   //     this._studentprofession= studentprofession;
     }
 
     public int get_id() {
@@ -34,11 +34,4 @@ public class Student {
         this._studentname = _studentname;
     }
 
-    public String get_studentprofession() {
-        return _studentprofession;
     }
-
-    public void set_studentprofession(String _studentprofession) {
-        this._studentprofession = _studentprofession;
-    }
-}

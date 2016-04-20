@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper{
     //public static final int COL_INDEX1 = "_id";
     //public static final String COL_NAME1 = "Profession";
     public static final String KEY_NAME = "studentname";
-    public static final String KEY_PROFESSION = "studentprofession";
+//    public static final String KEY_PROFESSION = "studentprofession";
     private SQLiteDatabase db;
 
 
@@ -26,8 +26,7 @@ public class DBHelper extends SQLiteOpenHelper{
     private static final String DB_CREATE="create table "+TABLE_NAME+" ("
             +KEY_ID+" integer primary key "+ "autoincrement , " +
             ""+KEY_NAME+" text not null," +
-            ""+KEY_PROFESSION+"text" + "" +
-            ");";
+            ""+");";
 
 
 
@@ -56,7 +55,6 @@ public class DBHelper extends SQLiteOpenHelper{
 
         ContentValues contentValues=new ContentValues();
         contentValues.put(KEY_NAME,student.get_studentname());
-        contentValues.put(KEY_PROFESSION,student.get_studentprofession());
 
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_NAME, null, contentValues);
