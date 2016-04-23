@@ -21,4 +21,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_registered">Registered</string>
+    <string name="title_activity_book">book</string>
+    <string name="title_activity_test">test</string>
+    <string name="title_activity_daa_test">daaTest</string>
 </resources>

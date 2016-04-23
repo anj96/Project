@@ -37,6 +37,18 @@
         <activity
             android:name=".Registered"
             android:label="@string/title_activity_registered"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".book"
+            android:label="@string/title_activity_book"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".test"
+            android:label="@string/title_activity_test"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".daaTest"
+            android:label="@string/title_activity_daa_test"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

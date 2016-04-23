@@ -4,12 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.mydomain.myintentcvex.FragmentDrawerOne">
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Browse for books"
-        android:id="@+id/txtfrgone"
+        android:text="Go to Books Section!"
+        android:id="@+id/bookButton"
         android:layout_gravity="center" />
-
 </FrameLayout>

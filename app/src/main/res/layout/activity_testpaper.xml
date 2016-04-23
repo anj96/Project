@@ -5,11 +5,10 @@
     tools:context="com.example.mydomain.myintentcvex.FragmentDrawerTwo">
 
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Appear for test"
-        android:id="@+id/txtfrgtwo"
+        android:text="Go to Test Section!"
+        android:id="@+id/testButton"
         android:layout_gravity="center" />
 </FrameLayout>

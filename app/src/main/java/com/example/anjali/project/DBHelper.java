@@ -18,15 +18,14 @@ public class DBHelper extends SQLiteOpenHelper{
     //public static final int COL_INDEX1 = "_id";
     //public static final String COL_NAME1 = "Profession";
     public static final String KEY_NAME = "studentname";
-//    public static final String KEY_PROFESSION = "studentprofession";
+public static final String KEY_PROFESSION = "studentprofession";
     private SQLiteDatabase db;
 
 
 
     private static final String DB_CREATE="create table "+TABLE_NAME+" ("
             +KEY_ID+" integer primary key "+ "autoincrement , " +
-            ""+KEY_NAME+" text not null," +
-            ""+");";
+            ""+KEY_NAME+" text not null, "  +KEY_PROFESSION+" text not null);";
 
 
 
@@ -51,10 +50,11 @@ public class DBHelper extends SQLiteOpenHelper{
     }
 
 
-    public void insertEntry(Student student) {
+    public void insertEntry(String name, String profession) {
 
         ContentValues contentValues=new ContentValues();
-        contentValues.put(KEY_NAME,student.get_studentname());
+        contentValues.put(KEY_NAME,name);
+        contentValues.put(KEY_PROFESSION,profession);
 
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_NAME, null, contentValues);
@@ -75,11 +75,12 @@ public class DBHelper extends SQLiteOpenHelper{
     public String getEntry(){
         String dbString="";
         SQLiteDatabase db= getWritableDatabase();
-        String query = "SELECT * FROM "+ TABLE_NAME+ " WHERE 1";
-
+        String query = "SELECT studentname FROM "+ TABLE_NAME+ " WHERE " +KEY_ID+ " = 1";
         Cursor c = db.rawQuery(query,null);
-
         c.moveToFirst();
+        dbString = c.getString(c.getColumnIndex("studentname"));
+
+        /*c.moveToFirst();
 
         while (!c.isAfterLast()){
             if(c.getString(c.getColumnIndex("studentname "))!= null){
@@ -91,7 +92,7 @@ public class DBHelper extends SQLiteOpenHelper{
             c.moveToNext();
         }
 
-        db.close();
+        db.close();*/
         return dbString;
     }
 

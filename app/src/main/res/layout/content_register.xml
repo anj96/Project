@@ -27,6 +27,16 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/submitButton" />
 
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/professionText"
+        android:hint="Profession"
+        android:textColorHint="@color/colorPrimary"
+        android:layout_below="@+id/nameText"
+        android:layout_alignParentStart="true" />
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +46,8 @@
         android:id="@+id/enterName"
         android:layout_alignTop="@+id/nameText"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/professionText" />
+
+    />
 
 
     <TextView
