@@ -28,7 +28,7 @@ Button testButton;
         testButton=(Button)view.findViewById(R.id.testButton);
         testButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent i1 = new Intent(getActivity(),test.class);
+                Intent i1 = new Intent(getActivity(),daaTest.class);
                 startActivity(i1);
             }
         });

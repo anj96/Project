@@ -1,58 +1,108 @@
 package com.example.anjali.project;
 
-import android.content.Intent;
-import android.net.Uri;
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import android.os.CountDownTimer;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class daaTest extends AppCompatActivity {
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.concurrent.TimeUnit;
 
-    Button easyButton,interButton, hardButton;
+public class daaTest extends Activity {
+    Button b1;
+    // EditText ed1;
+
+    TextView text1;
+
+    private static final String FORMAT = "%02d:%02d:%02d";
+
+    int seconds , minutes;
+
+
+    private WebView wv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daa_test);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        easyButton=(Button)findViewById(R.id.easyButton);
-        easyButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Uri uri = Uri.parse("http://geeksquiz.com/algorithms/analysis-of-algorithms/"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
-        interButton=(Button)findViewById(R.id.seButton);
-        interButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Uri uri = Uri.parse("http://geeksquiz.com/algorithms/greedy-algorithms/"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
-        hardButton=(Button)findViewById(R.id.nseButton);
-        hardButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Uri uri = Uri.parse("http://geeksquiz.com/algorithms/dynamic-programming/"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
 
+        b1=(Button)findViewById(R.id.button);
+        //   ed1=(EditText)findViewById(R.id.editText);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        wv1=(WebView)findViewById(R.id.webView);
+        wv1.setWebViewClient(new MyBrowser());
+
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                String url = "http://geeksquiz.com/algorithms/analysis-of-algorithms/";
+
+                wv1.getSettings().setLoadsImagesAutomatically(true);
+                wv1.getSettings().setJavaScriptEnabled(true);
+                wv1.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+                wv1.loadUrl(url);
+                text1 = (TextView) findViewById(R.id.textView1);
+
+                new CountDownTimer(300000, 1000) { // adjust the milli seconds here
+
+                    public void onTick(long millisUntilFinished) {
+
+                        text1.setText("" + String.format(FORMAT,
+                                TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(
+                                        TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
+                                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                    }
+
+                    public void onFinish() {
+                        text1.setText("done!");
+                    }
+                }.start();
+
             }
+
+
         });
     }
 
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
